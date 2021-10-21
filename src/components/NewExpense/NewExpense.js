@@ -2,11 +2,8 @@ import React from "react"
 import './NewExpense.css';
 import AddExpense from "./AddExpense";
 
-//it's not a wrapper component
 const NewExpense = (props) => {
-    //lifting up method
     const saveExpenseDataHundler = (enteredExpenseData) => {
-        // console.log(enteredExpenseData);
         const expenseData = {
             ...enteredExpenseData,
             id: Math.random().toString(),

@@ -6,7 +6,7 @@ function AddExpense(props){
     const [num, setNum] = useState(0)
 
     function Plus(){
-        return setNum(pred => pred + 1)
+        setNum(pred => pred + 1)
     }
 
 
