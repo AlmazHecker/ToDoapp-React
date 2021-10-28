@@ -7,17 +7,27 @@ import Second from './components/Second'
 import Third from './components/Third'
 
 function App() {
+  const [value, setValue] = useState(false)
 
+  function onTrue(){
+    setValue(prev => prev = true)
+  }
 
-
-  return (
-    <Layout >
+  let content;
+  if(value){
+    content = 
+      <Layout >
       <First />
       <Second />
       <Third />
-    </Layout>
-      
-  );
+      </Layout>
+  }
+return(
+  <div>
+    <button onClick={onTrue}>show</button>
+      {content}
+  </div>
+)
 }
 
 export default App;
