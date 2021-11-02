@@ -18,7 +18,7 @@ function App() {
 
     function onDeleteUser(userId){
       setUserList( (prevUsers) => {
-        const 
+        const updatedUsers = prevUsers.filter())
       })
     }
 
