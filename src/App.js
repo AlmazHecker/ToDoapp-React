@@ -17,7 +17,9 @@ function App() {
       ] }) };
 
     function onDeleteUser(userId){
-      setUserList()
+      setUserList( (prevUsers) => {
+        const 
+      })
     }
 
   return (
