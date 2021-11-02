@@ -2,21 +2,18 @@ import React from "react";
 import Card from "../UI/Card";
 import classes from "./UsersList.module.css";
 
-const UsersList = props => {
+import RenderUsers from './RenderUsers'
 
-    function OndeleteItem() {
-        props.Ondelete()
-    }
+const UsersList = props => {
 
     return (
         <Card className={classes.users}>
             <ul>
                 {props.users.map(user =>
-                    <li key={user.id} id={user.id}>
-                        {user.name} 
-                        {user.age}
-                        <button>Delete</button>
-                    </li>)}
+
+                    <RenderUsers key={user.id} id={user.id} onDelete={props.onDelete}>
+                        {user.name} {user.age}
+                    </RenderUsers>)}
             </ul>
         </Card>
     )
