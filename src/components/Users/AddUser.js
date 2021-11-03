@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
-import Button from '../UI/Button';
+import Button from '../UI/Button/Button';
 import classes from './AddUser.module.css';
-import ErrorModal from "../UI/ErrorModal";
+import ErrorModal from "../ErrorModal/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = props => {
