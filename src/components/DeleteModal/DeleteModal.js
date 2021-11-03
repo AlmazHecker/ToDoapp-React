@@ -8,7 +8,7 @@ const ErrorModal = props => {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(
-                <Backdrop onConfirm={props.onConfirm} />,
+                <Backdrop onConfirm={props.onCancel} />,
                 document.getElementById('backdrop-root')
             )}
             {ReactDOM.createPortal(
