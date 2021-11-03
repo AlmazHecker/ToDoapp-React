@@ -1,4 +1,4 @@
-import classes from './ErrorModal.module.css'
+import classes from './ModalOverlay.module.css'
 import Card from "../UI/Card";
 import Button from "../UI/Button/Button";
 

@@ -1,12 +1,22 @@
+import React from "react";
+import ReactDOM from "react-dom";
 
+import ModalOverlay from "./ModalOverlay";
+import Backdrop from '../UI/Backdrop/Backdrop'
 
-function DeleteModal(props) {
-    return(
-        <>
-        <button onClick={props.onDelete}>confirm</button>
-        <button onClick={props.onCancel}>Cancel</button>
-        </>
+const ErrorModal = props => {
+    return (
+        <React.Fragment>
+            {ReactDOM.createPortal(
+                <Backdrop onConfirm={props.onConfirm} />,
+                document.getElementById('backdrop-root')
+            )}
+            {ReactDOM.createPortal(
+                <ModalOverlay onDelete={props.onDelete} onCancel={props.onCancel}/>,
+                document.getElementById('modal-root')
+            )}
+        </React.Fragment>
     )
-}
+};
 
-export default DeleteModal;
+export default ErrorModal;

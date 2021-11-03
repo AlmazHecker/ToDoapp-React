@@ -10,7 +10,6 @@ const UsersList = props => {
         <Card className={classes.users}>
             <ul>
                 {props.users.map(user =>
-
                     <RenderUsers key={user.id} id={user.id} onDelete={props.onDelete}>
                         {user.name} {user.age}
                     </RenderUsers>)}
