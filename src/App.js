@@ -26,10 +26,28 @@ function App() {
       })
     }
 
+    // TODO: функция для изменения ника если появилась ошибкай
+    function onChangeUser(userId, name, age){
+      setUserList( (prevUsers) => {
+        const changedUser = {
+          name: name,
+          age: age,
+          id: userId,
+        }
+        // TODO: для того чтобы user не раздвоился
+        const updatedUsers = prevUsers.filter(user => user.id !== userId)
+        
+        // TODO: так user раздвоится
+        updatedUsers.unshift(changedUser)
+
+        return updatedUsers;
+      })
+    }
+
   return (
     <>
       <AddUser onAddUser={addUserHandler} />
-      <UsersList users={userList} onDelete={onDeleteUser}/>
+      <UsersList users={userList} onDelete={onDeleteUser} onChangeUser={onChangeUser}/>
     </>
   );
 }

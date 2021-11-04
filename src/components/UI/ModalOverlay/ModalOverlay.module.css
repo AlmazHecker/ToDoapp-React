@@ -21,6 +21,19 @@
     padding: 1rem;
 }
 
+.content h3{
+    margin: 0px;
+}
+
+.inputBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputBlock input {
+    width: 8rem;
+}
+
 .actions {
     padding: 1rem;
     display: flex;

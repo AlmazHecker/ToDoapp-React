@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ModalOverlay from "../UI/ModalOverlay/ModalOverlay";
+import ModalOverlay from "./ModalOverlay";
 import Backdrop from '../UI/Backdrop/Backdrop'
 
 const ErrorModal = props => {

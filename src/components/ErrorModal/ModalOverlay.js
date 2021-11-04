@@ -1,18 +1,16 @@
-import classes from '../UI/ModalOverlay/ModalOverlay.module.css'
-import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
-
+import Card from '../UI/Card/Card';
+import classes from '../UI/ModalOverlay/ModalOverlay.module.css'
 const ModalOverlay = props => {
     return <Card className={classes.modal}>
         <header className={classes.header}>
-            <h2>Delete or cancel</h2>
+            <h2>{props.title}</h2>
         </header>
         <div className={classes.content}>
-            <p>Do you want to delete this User ?</p>
+            <p>{props.message}</p>
         </div>
         <footer className={classes.actions}>
-            <Button onClick={props.onDelete}>Delete</Button>
-            <Button onClick={props.onCancel}>Cancel</Button>
+            <Button onClick={props.onConfirm}>Okay</Button>
         </footer>
     </Card>
 }

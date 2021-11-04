@@ -6,15 +6,16 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = props => {
-    const [enteredUsername, setEnteredUsername] = useState('');
-    const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState();
 
-    const 
-
+    const AddUserForm = useRef(null)
+    
+    
+    
     const addUserHandler = (event) => {
         event.preventDefault();
-        if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+        const Form = AddUserForm.current
+        if (Form['username'].value.trim().length === 0 || Form['age'].value.trim().length === 0) {
             setError({
                 title: "Invalid input",
                 message: 'Please enter a valid name and age (non-empty values)'
@@ -22,27 +23,19 @@ const AddUser = props => {
             return;
         }
 
-        if (+enteredAge < 1) {
+        if (+Form['age'].value < 1) {
             setError({
                 title: "Invalid age",
                 message: 'Please enter a valid age (> 0)'
             });
             return;
         }
-        props.onAddUser(enteredUsername, enteredAge);
-        setEnteredUsername('');
-        setEnteredAge('');
+        props.onAddUser(Form['username'].value, Form['age'].value);
+        Form['username'].value = '' 
+        Form['age'].value = ''
     }
 
-    const usernameChangeHandler = (event) => {
-        setEnteredUsername(event.target.value);
-    }
-
-    const ageChangeHandler = (event) => {
-        setEnteredAge(event.target.value);
-    }
-
-
+    // TODO: работает при клике на'Okay' в модальном окне ошибки 
     const errorHandler = () => {
         setError(null)
     }
@@ -51,21 +44,12 @@ const AddUser = props => {
         <Wrapper>
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.input}>
-                <form onSubmit={addUserHandler}>
+                <form onSubmit={addUserHandler} ref={AddUserForm}>
                     <label htmlFor="username">Username</label>
-                    <input
-                        id="username"
-                        value={enteredUsername}
-                        type='text'
-                        onChange={usernameChangeHandler}
-                    />
+                    <input id='username' type='text'/>
+
                     <label htmlFor="age">Age (years)</label>
-                    <input
-                        id="age"
-                        type='number'
-                        value={enteredAge}
-                        onChange={ageChangeHandler}
-                    />
+                    <input id="age" type='number' />
                     <Button type="submit">Add user</Button>
                 </form>
             </Card>
