@@ -28,21 +28,31 @@ function App() {
 
     // TODO: функция для изменения ника если появилась ошибкай
     function onChangeUser(userId, name, age){
-      setUserList( (prevUsers) => {
-        const changedUser = {
-          name: name,
-          age: age,
-          id: userId,
-        }
-        // TODO: для того чтобы user не раздвоился
-        const updatedUsers = prevUsers.filter(user => user.id !== userId)
-        
-        // TODO: так user раздвоится
-        updatedUsers.unshift(changedUser)
+      setUserList( prevUsers => {
 
+        const updatedUsers = prevUsers.map(user => {
+          if(user.id === userId){
+            console.log(user);
+            user.name = name
+            user.age = age
+          }
+          return user;
+        })
         return updatedUsers;
       })
     }
+        // TODO: старый код 
+      //   const changedUser = {
+      //     name: name,
+      //     age: age,
+      //     id: userId,
+      //   }
+      //   // TODO: для того чтобы user не раздвоился
+      //   const updatedUsers = prevUsers.filter(user => user.id !== userId)
+        
+      //   // TODO: так user раздвоится
+      //   updatedUsers.unshift(changedUser)
+
 
   return (
     <>
