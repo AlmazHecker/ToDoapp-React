@@ -1,5 +1,5 @@
 import classes from './ModalOverlay.module.css'
-import Card from '../UI/Card'
+import Card from '../UI/Card/Card'
 import Button from '../UI/Button/Button'
 
 function DeleteModal(props) {

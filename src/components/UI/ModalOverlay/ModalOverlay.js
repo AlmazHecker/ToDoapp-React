@@ -1,6 +1,6 @@
 import classes from './ModalOverlay.module.css'
-import Card from "../UI/Card";
-import Button from "../UI/Button/Button";
+import Card from "../Card/Card";
+import Button from "../Button/Button";
 
 
 const ModalOverlay = props => {
@@ -12,7 +12,11 @@ const ModalOverlay = props => {
             <p>{props.message}</p>
         </div>
         <footer className={classes.actions}>
-            <Button onClick={props.onConfirm}>Okay</Button>
+            {/* если  */}
+            {props.onDelete ? <Button onClick={props.onDelete}>Delete</Button> : ''}
+            <Button onClick={props.onCancel ? props.onCancel :props.onConfirm}>
+                {props.onCancel ? 'Cancel': 'Okay' }
+            </Button>
         </footer>
     </Card>
 }
