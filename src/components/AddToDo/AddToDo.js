@@ -1,5 +1,6 @@
 import React, { useReducer,  useState } from "react"
-import Modal from "../Modal/Modal";
+import ErrorModal from '../Modal/ErrorModal'
+import Card from '../Card/Card'
 
 export default function AddToDo(props){
 
@@ -35,14 +36,17 @@ export default function AddToDo(props){
       
         return (
         <>
-            {isEmpty ? <Modal onCancel={() => setValue(false)}/> : ''}
+            {isEmpty ? <ErrorModal onCancel={() => setValue(false)}/> : ''}
+            <Card>
+
           <form onSubmit={submitHandler}>
             <input
               value={inputV}
               onChange={e => dispatch({type: 'AddToDo', ToDo: e.target.value }) }
-            />
+              />
             <button type='submit' >Add New ToDo</button>
           </form>
+            </Card>
         </>
         );
 }
