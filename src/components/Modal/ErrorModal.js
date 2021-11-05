@@ -16,7 +16,7 @@ export default function Backdrop (){
 
 function ErrorModal() {
     return(
-        <>
+        <React.Fragment>
 
             {ReactDOM.createPortal(
                 <Backdop/>,
@@ -27,7 +27,8 @@ function ErrorModal() {
                 document.getElementById('for-modals')
             )}
 
-        </>
+        </React.Fragment>
     )
 }
 
+export default ErrorModal
