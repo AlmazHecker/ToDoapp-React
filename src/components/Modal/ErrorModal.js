@@ -1,8 +1,9 @@
 import React from "react"
 import ReactDOM from 'react-dom';
+import Card from "../Card/Card";
 import classes from './ErrorModal.module.css'
 
-function ErrorModal() {
+function ErrorModal(props) {
 
     function Backdrop(){
         return(
@@ -11,11 +12,13 @@ function ErrorModal() {
     } 
 
 
-    function Modal(props){
+    function Modal(){
         return(
             <div className={classes.modal}>
-                <h1>input is empty</h1>
-                <button onClick={props.onCancel}>Okay</button>
+                <div className={classes.content}>
+                    <h1>input is empty</h1>
+                    <button onClick={props.onCancel}>Okay</button>
+                </div>
             </div>
         )
     } 

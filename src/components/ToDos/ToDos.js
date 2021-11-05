@@ -1,5 +1,5 @@
-import './ToDos.css'
-
+import classes from './ToDos.module.css'
+import Card from '../Card/Card';
 export default function ToDos(props){
     
     
@@ -9,16 +9,18 @@ export default function ToDos(props){
     }
 
     return(
-        <ul>
+        <Card>
+            <ul >
             {
-                props.DATA.map(ToDo => (
-                <li key={ToDo.id} id={ToDo.id}>
-                    <p className={ToDo.done ? 'line-through' : ''}>{ToDo.text}</p>
-                    <p>{ToDo.time}</p>
+                props.DATA.map((ToDo, index) => (
+                <li key={ToDo.id} id={ToDo.id} className={classes.ToDoList}>
+                    <p className={ToDo.done ? classes.lineThrough : ''}>ToDo№{++index}: {ToDo.text}</p>
                     <input type='checkbox' id={ToDo.id} onClick={(e) => CheckHandler(ToDo.id)}/>                    
+                    <p>Date: {ToDo.time}</p>
                 </li>
             ))
             }
-        </ul>
+            </ul>
+        </Card>
     )
 }

@@ -1,0 +1,9 @@
+.lineThrough{
+    text-decoration: line-through;
+}
+
+.ToDoList {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

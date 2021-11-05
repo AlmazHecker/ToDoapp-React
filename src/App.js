@@ -10,13 +10,13 @@ function App() {
   
   useEffect(() => {
     const storedDATA = JSON.parse(localStorage.getItem('ToDos')) || []
-    DATA.push(...storedDATA)
+    storedDATA.filter(item => item.id !== item.id)
+      DATA.push(...storedDATA)
+    }, [])
     
-  }, [])
-
     function AddNewTodo(todo){
-    setDATA( prevToDos => {
-      const updatedToDos = [...prevToDos]
+      setDATA( prevToDos => {
+        const updatedToDos = [...prevToDos]
       updatedToDos.unshift(todo)
       localStorage.setItem("ToDos", JSON.stringify(updatedToDos));
       return updatedToDos;
@@ -30,6 +30,8 @@ function App() {
       }
       return ToDo;
     })
+    localStorage.setItem('ToDos', JSON.stringify(updatedDATA))
+    
     setDATA(updatedDATA)
     
   }
