@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import Modal from "./Modal"
 import classes from './ErrorModal.module.css'
 
 function ErrorModal() {
@@ -14,10 +13,10 @@ function ErrorModal() {
 
     function Modal(props){
         return(
-            <>
+            <div className={classes.modal}>
                 <h1>input is empty</h1>
                 <button onClick={props.onCancel}>Okay</button>
-            </>
+            </div>
         )
     } 
     return(
@@ -26,7 +25,7 @@ function ErrorModal() {
             {ReactDOM.createPortal(
                 <Backdrop/>,
                 document.getElementById('backdrop')
-            )}
+                )}
             {ReactDOM.createPortal(
                 <Modal />,
                 document.getElementById('for-modals')
