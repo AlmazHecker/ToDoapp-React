@@ -7,21 +7,17 @@ function App() {
 
   const [DATA, setDATA] = useState([])
 
-  
   useEffect(() => {
     const storedDATA = JSON.parse(localStorage.getItem('ToDos')) || []
+    storedDATA.filter(ToDo => ToDo.id !== ToDo.id)
     DATA.push(...storedDATA)
   }, [])
-
-    function saveDATA(todo) {
-      localStorage.setItem('ToDos', JSON.stringify(todo))
-    }
     
     function AddNewTodo(todo){
       setDATA( prevToDos => {
         const updatedToDos = [...prevToDos]
       updatedToDos.push(todo)
-      saveDATA(updatedToDos)
+      localStorage.setItem('ToDos', JSON.stringify(updatedToDos))
       return updatedToDos;
     })
   }
@@ -33,19 +29,19 @@ function App() {
       }
       return ToDo;
     })
-    saveDATA(updatedDATA)
+    localStorage.setItem('ToDos', JSON.stringify(updatedDATA))
     setDATA(updatedDATA)
   }
 
   function onDelete(ToDoId){
     const updatedDATA = DATA.filter(ToDo => ToDo.id !== ToDoId)
-    saveDATA(updatedDATA)
+    localStorage.setItem('ToDos', JSON.stringify(updatedDATA))
     setDATA(updatedDATA)
   }
 
 let data = JSON.parse(localStorage.getItem('ToDos')) || []
 
-
+console.log(DATA);
   return (
     <>
     <AddToDo onAddTodo={AddNewTodo}/>

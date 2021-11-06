@@ -2,7 +2,6 @@ import classes from './ToDos.module.css'
 import Card from '../Card/Card';
 
 
-
 export default function ToDos(props){
     function CheckHandler(id){
             props.onCheck(id)
@@ -12,22 +11,22 @@ export default function ToDos(props){
         props.onDeleteToDo(id)
     }
 
-
     return(
         <Card className={classes.container}>
             <ul className={classes.wrapper} >
-            {
-                props.DATA.map((ToDo, index) => (
-                <li key={ToDo.id} id={ToDo.id} className={classes.ToDoList}>
-                    <p className={ToDo.done ? classes.lineThrough: ''}> ToDo№{++index}:  {ToDo.text} 
-                    <input type='checkbox' id={ToDo.id} onClick={() => CheckHandler(ToDo.id)}/>                    
+            {props.DATA.map((ToDo, index) => (
+                <li key={ToDo.id} id={ToDo.id}>
+                    <p className={`${classes.ToDO} ${ToDo.done ? classes.lineThrough: ''}`}> 
+                        ToDo№{++index}: {ToDo.text}
                     </p>
-                    {ToDo.done ? 'Done' : 'Not done'} 
-                    <p>Date: {ToDo.time}</p>
+                    <p>
+                        {ToDo.done ? 'Done' : 'Not done'}
+                        <input type='checkbox' onClick={() => CheckHandler(ToDo.id)}/>                    
+                    </p>
+                    <p>{ToDo.time}</p>
                     <button onClick={() => onDelete(ToDo.id)}>Delete</button>
                 </li>
-            ))
-            }
+                ))}
             </ul>
         </Card>
     )

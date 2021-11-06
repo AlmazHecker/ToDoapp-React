@@ -2,33 +2,42 @@
     text-decoration: line-through;
 }
 
-.ToDoList {
+.ToDo{
     display: flex;
-    align-items: center;
-    width: auto;
-    margin: 0 auto;
-    justify-content: space-around;
-    align-self: center;
+    width: 400px;
 }
 
 .container {
     margin-top: 30px;
-    padding: 3%;
+    padding: 20px;
 }
 
 .container .wrapper {
-    padding: 0px;
-    width: 95%;
     margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
+    background-color: rgb(30, 30, 30);
+    padding: 0px;
+}
+
+.container li {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1.3rem;
+    border-radius: 5px;
+}
+
+.container li:last-child{
+    margin-bottom: 0;
 }
 
 .container button {
+    font-size: 15px;
     height: 1.8rem;
     width: 3.8rem;
     border: none;
     background: rgb(30, 30, 30);
+    color: white;
 }
 
 .container button:hover {

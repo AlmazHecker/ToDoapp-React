@@ -31,13 +31,12 @@
 }
 
 .content button{
-    width: 7rem;
+    width: 6rem;
     border-radius: 5px;
     padding: 5px;
     font-size: 20px;
     border: none;
-    background: rosybrown;
-    display: flex;
+    background: slateblue;
     justify-content: center;
     align-self: flex-end;
 }

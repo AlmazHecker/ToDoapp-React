@@ -1,29 +1,22 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import Card from "../Card/Card";
 import classes from './ErrorModal.module.css'
 
-function ErrorModal(props) {
+export default function ErrorModal(props) {
 
-    function Backdrop(){
-        return(
-            <div className={classes.backdrop}></div>
-        )
-    } 
+    const Backdrop = () => <div className={classes.backdrop} onClick={props.onCancel}></div>
 
-
-    function Modal(){
-        return(
-            <Card className={classes.modal}>
-                <div className={classes.content}>
-                    <h1>input is empty. <br/>Type smth</h1>
-                    <button onClick={props.onCancel}>Okay</button>
-                </div>
-            </Card>
-        )
-    } 
+    const Modal = () => (
+        <div className={classes.modal}>
+            <div className={classes.content}>
+                <h1>input is empty. <br/>Type smth</h1>
+                <button onClick={props.onCancel}>Okay</button>
+            </div>
+        </div>
+   )
+                
     return(
-        <React.Fragment>
+        <>
             {ReactDOM.createPortal(
                 <Backdrop/>,
                 document.getElementById('backdrop')
@@ -32,8 +25,6 @@ function ErrorModal(props) {
                 <Modal />,
                 document.getElementById('for-modals')
             )}
-        </React.Fragment>
+        </>
     )
 }
-
-export default ErrorModal;

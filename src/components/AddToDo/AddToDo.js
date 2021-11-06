@@ -39,14 +39,14 @@ export default function AddToDo(props){
       
         return (
         <>
-            {isEmpty ? <ErrorModal onCancel={() => setError(false)}/> : ''}
+            {isEmpty && <ErrorModal onCancel={() => setError(false)}/> }
         <Card className={classes.Wrapper}>
           <form onSubmit={submitHandler} className={classes.AddToDo}>
-                  <h1>Add New ToDo</h1>
-            <input
-              value={inputV}
-              onChange={e => dispatch({type: 'AddToDo', ToDo: e.target.value }) }
-              />
+                <h1>Add New ToDo</h1>
+                <input
+                    value={inputV}
+                    onChange={e => dispatch({type: 'AddToDo', ToDo: e.target.value }) }
+                />
             <button type='submit' >Add ToDo</button>
           </form>
             </Card>
