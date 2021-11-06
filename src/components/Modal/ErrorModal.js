@@ -14,17 +14,16 @@ function ErrorModal(props) {
 
     function Modal(){
         return(
-            <div className={classes.modal}>
+            <Card className={classes.modal}>
                 <div className={classes.content}>
-                    <h1>input is empty</h1>
+                    <h1>input is empty. <br/>Type smth</h1>
                     <button onClick={props.onCancel}>Okay</button>
                 </div>
-            </div>
+            </Card>
         )
     } 
     return(
         <React.Fragment>
-
             {ReactDOM.createPortal(
                 <Backdrop/>,
                 document.getElementById('backdrop')
@@ -33,7 +32,6 @@ function ErrorModal(props) {
                 <Modal />,
                 document.getElementById('for-modals')
             )}
-
         </React.Fragment>
     )
 }

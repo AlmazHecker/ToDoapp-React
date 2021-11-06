@@ -10,15 +10,18 @@ function App() {
   
   useEffect(() => {
     const storedDATA = JSON.parse(localStorage.getItem('ToDos')) || []
-    storedDATA.filter(item => item.id !== item.id)
-      DATA.push(...storedDATA)
-    }, [])
+    DATA.push(...storedDATA)
+  }, [])
+
+    function saveDATA(todo) {
+      localStorage.setItem('ToDos', JSON.stringify(todo))
+    }
     
     function AddNewTodo(todo){
       setDATA( prevToDos => {
         const updatedToDos = [...prevToDos]
-      updatedToDos.unshift(todo)
-      localStorage.setItem("ToDos", JSON.stringify(updatedToDos));
+      updatedToDos.push(todo)
+      saveDATA(updatedToDos)
       return updatedToDos;
     })
   }
@@ -30,17 +33,23 @@ function App() {
       }
       return ToDo;
     })
-    localStorage.setItem('ToDos', JSON.stringify(updatedDATA))
-    
+    saveDATA(updatedDATA)
     setDATA(updatedDATA)
-    
   }
-  let data = JSON.parse(localStorage.getItem('ToDos')) || []
+
+  function onDelete(ToDoId){
+    const updatedDATA = DATA.filter(ToDo => ToDo.id !== ToDoId)
+    saveDATA(updatedDATA)
+    setDATA(updatedDATA)
+  }
+
+let data = JSON.parse(localStorage.getItem('ToDos')) || []
+
 
   return (
     <>
     <AddToDo onAddTodo={AddNewTodo}/>
-    <ToDos DATA={DATA ? data: DATA} onCheck={onDone} />
+    <ToDos DATA={data} onCheck={onDone} onDeleteToDo={onDelete} />
     </>
   );
 }

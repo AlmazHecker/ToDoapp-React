@@ -5,5 +5,32 @@
 .ToDoList {
     display: flex;
     align-items: center;
+    width: auto;
+    margin: 0 auto;
     justify-content: space-around;
+    align-self: center;
+}
+
+.container {
+    margin-top: 30px;
+    padding: 3%;
+}
+
+.container .wrapper {
+    padding: 0px;
+    width: 95%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.container button {
+    height: 1.8rem;
+    width: 3.8rem;
+    border: none;
+    background: rgb(30, 30, 30);
+}
+
+.container button:hover {
+    opacity: 0.9;
 }

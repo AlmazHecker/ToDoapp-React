@@ -1,10 +1,11 @@
 import React, { useReducer,  useState } from "react"
 import ErrorModal from '../Modal/ErrorModal'
 import Card from '../Card/Card'
+import classes from './AddToDo.module.css'
 
 export default function AddToDo(props){
 
-    const [isEmpty, setValue] = useState(false)
+    const [isEmpty, setError] = useState(false)
 
     const [inputV, dispatch] = useReducer(reducer, '');
 
@@ -16,12 +17,14 @@ export default function AddToDo(props){
             case 'Submit':
                 inputV = action.clear
                 return inputV;
+            default: 
+                return inputV;
         }
     }
         function submitHandler(e) {
             e.preventDefault()
-            if(inputV === ''){
-                setValue(true)
+            if(inputV.trim() === ''){
+                setError(true)
                 return;
             }
             let ToDo = {
@@ -36,15 +39,15 @@ export default function AddToDo(props){
       
         return (
         <>
-            {isEmpty ? <ErrorModal onCancel={() => setValue(false)}/> : ''}
-            <Card>
-
-          <form onSubmit={submitHandler}>
+            {isEmpty ? <ErrorModal onCancel={() => setError(false)}/> : ''}
+        <Card className={classes.Wrapper}>
+          <form onSubmit={submitHandler} className={classes.AddToDo}>
+                  <h1>Add New ToDo</h1>
             <input
               value={inputV}
               onChange={e => dispatch({type: 'AddToDo', ToDo: e.target.value }) }
               />
-            <button type='submit' >Add New ToDo</button>
+            <button type='submit' >Add ToDo</button>
           </form>
             </Card>
         </>

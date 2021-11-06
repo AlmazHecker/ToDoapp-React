@@ -1,0 +1,41 @@
+
+.Wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddToDo{
+    width: 400px;
+    height: 150px;
+    /* background-color: brown; */
+    background: slateblue;
+    margin: 0 auto;
+    text-align: center
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.AddToDo h1 {
+    font-family: 'Lobster';
+}
+
+.AddToDo input {
+    font-family: 'Roboto';
+    font-size: 20px;
+    border: none;
+    width: 9rem;
+    height: 1.8rem;
+}
+
+.AddToDo button {
+    padding-top: 4px;
+    height: 1.8rem;
+    border: none;
+    background: rgb(30, 30, 30);
+}
+
+.AddToDo button:hover {
+    opacity: 0.9;
+}
